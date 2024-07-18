@@ -80,11 +80,28 @@ export const gameUpdater = (
           ...state,
           target: Math.floor(Math.random() * 100),
           log: addLog(
-            `user ${action.user.id} guessed ${action.guess} and won! 👑`,
+            `user ${action.user.id} guessed ${action.guess} and won! 👑 A new number to guess has been set`,
             state.log
           ),
         };
-      } else {
+      } else if (action.guess > state.target) {
+		return {
+		  ...state,
+		  log: addLog(
+			`user ${action.user.id} guessed ${action.guess} and it's too high`,
+			state.log
+		  ),
+		};
+	  } else if (action.guess < state.target) {
+		return {
+		  ...state,
+		  log: addLog(
+			`user ${action.user.id} guessed ${action.guess} and it's too low`,
+			state.log
+		  ),
+		};
+	  }
+	  else {
         return {
           ...state,
           log: addLog(

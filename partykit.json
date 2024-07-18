@@ -1,4 +1,4 @@
 {
-  "name": "partykit-starter-party",
+  "name": "guessing-game",
   "main": "party/index.ts"
 }
